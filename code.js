@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const showButton = document.querySelector('#newBookBtn')
 const newBookForm = document.querySelector('#newBookForm')
+const overlay = document.querySelector('#overlay')
+
 const cardContainer = document.querySelector('.card-container')
 const titleInput = document.querySelector('#bookTitle')
 const authorInput = document.querySelector('#bookAuthor')
@@ -57,6 +59,10 @@ function submitBtnListener(){
             pagesInput.value = ''
             readInput.checked = false
             newBookForm.style.display = 'none';
+            overlay.style.display = 'none';
+
+            errorMsg.innerHTML = ''
+
         }
     })
 }
@@ -96,6 +102,7 @@ function showFormForNewBook(){
 
     showButton.addEventListener('click', ()=>{
         newBookForm.style.display = 'block';
+        overlay.style.display = 'block';
     })
 }
 showFormForNewBook();
@@ -104,6 +111,8 @@ function hideFormForNewBook(){
     document.addEventListener('click', (e)=>{
         if(!newBookForm.contains(e.target) && e.target !== showButton){
             newBookForm.style.display = 'none';
+            overlay.style.display = 'none';
+
         }
     })
 }

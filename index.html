@@ -9,6 +9,19 @@
     <title>Library</title>
 </head>
 <body>
-    
+    <div class="form-container">
+        <form action="#" method="post" class="form" id="newBookForm" style="display: none;">
+            <input type="text" placeholder="Title" id="bookTitle">
+            <input type="text" placeholder="Author" id="bookAuthor">
+            <input type="number" placeholder="Number of pages" id="bookPages">
+            <label for="bookRead">I have read this book</label>
+            <input type="checkbox" id="bookRead">
+            <button type="submit" id="submitBook">Submit</button>
+        </form>
+    </div>
+
+    <button id="newBookBtn">NEW BOOK</button>
+    <div class="card-container"></div>
+
 </body>
 </html>

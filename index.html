@@ -9,19 +9,28 @@
     <title>Library</title>
 </head>
 <body>
-    <div class="form-container">
-        <form action="#" method="post" class="form" id="newBookForm" style="display: none;">
-            <input type="text" placeholder="Title" id="bookTitle">
-            <input type="text" placeholder="Author" id="bookAuthor">
-            <input type="number" placeholder="Number of pages" id="bookPages">
-            <label for="bookRead">I have read this book</label>
-            <input type="checkbox" id="bookRead">
-            <button type="submit" id="submitBook">Submit</button>
-        </form>
+    <div class="header">
+        <h1 class="title">Library</h1>
     </div>
+    <div class="main-content">
 
-    <button id="newBookBtn">NEW BOOK</button>
-    <div class="card-container"></div>
+        <button id="newBookBtn">+ NEW BOOK</button>
+
+        <div class="form-container">
+            <form action="/submit" method="post" class="form" id="newBookForm" style="display: none;">
+                <input type="text" placeholder="Title" id="bookTitle" required>
+                <input type="text" placeholder="Author" id="bookAuthor" required>
+                <input type="number" placeholder="Number of pages" id="bookPages" required>
+                <label for="bookRead">I have read this book</label>
+                <input type="checkbox" id="bookRead" value="read">
+                <button type="submit" id="submitBook">Submit</button>
+
+            </form>
+        </div>
+
+        <div class="card-container"></div>
+    </div>
+    <div class="footer">Copyright © 2023 MartinPerezGiordan</div>
 
 </body>
 </html>

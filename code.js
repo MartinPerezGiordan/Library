@@ -9,6 +9,7 @@ const authorInput = document.querySelector('#bookAuthor')
 const pagesInput = document.querySelector('#bookPages')
 const readInput = document.querySelector('#bookRead')
 const submitBtn = document.querySelector('#submitBook')
+const errorMsg = document.querySelector('.error')
 
 
 let bookId = 1
@@ -45,13 +46,18 @@ function submitBtnListener(){
         let authorInputValue = authorInput.value
         let pagesInputValue = pagesInput.value
         let readInputValue = readInput.checked
-        addBookToLibrary(titleInputValue, authorInputValue, pagesInputValue, readInputValue)
-        displayCards();
-        titleInput.value = ''
-        authorInput.value = ''
-        pagesInput.value = ''
-        readInput.checked = false
-        newBookForm.style.display = 'none';
+        if(titleInputValue==='' ||authorInputValue==='' ||pagesInputValue===''){
+            errorMsg.innerHTML = 'Please fill all the fields'
+        }
+        else{
+            addBookToLibrary(titleInputValue, authorInputValue, pagesInputValue, readInputValue)
+            displayCards();
+            titleInput.value = ''
+            authorInput.value = ''
+            pagesInput.value = ''
+            readInput.checked = false
+            newBookForm.style.display = 'none';
+        }
     })
 }
 submitBtnListener();
@@ -61,9 +67,9 @@ function displayCards(){
     cardContainer.innerHTML=''
     myLibrary.forEach(book => {
         if(!book.disabled){
-            let title = `<h2>${book.title}</h2>`
-            let author = `<p>${book.author}</p>`
-            let pages = `<p>${book.pages}</p>`
+            let title = `<h2>"${book.title}"</h2>`
+            let author = `<p>By ${book.author}</p>`
+            let pages = `<p>${book.pages} pages</p>`
             let btnRead = `<button class='read readBtn' id='${book.bookId}'>Read</button>`
             if(!book.read){
                 btnRead = `<button class='not-read readBtn' id='${book.bookId}'>Not Read</button>`

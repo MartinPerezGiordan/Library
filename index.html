@@ -16,13 +16,15 @@
 
         <button id="newBookBtn">+ NEW BOOK</button>
 
-        <div class="form-container">
-            <form action="/submit" method="post" class="form" id="newBookForm" style="display: none;">
-                <input type="text" placeholder="Title" id="bookTitle" required>
-                <input type="text" placeholder="Author" id="bookAuthor" required>
-                <input type="number" placeholder="Number of pages" id="bookPages" required>
+        <div class="form-container" id="newBookForm" style="display: none;">
+            <form action="/submit" method="post" class="form"  >
+                <div class="form-title">Add New Book</div>
+                <input type="text" placeholder="Title*" id="bookTitle" >
+                <input type="text" placeholder="Author*" id="bookAuthor" >
+                <input type="number" placeholder="Number of pages*" id="bookPages" >
                 <label for="bookRead">I have read this book</label>
                 <input type="checkbox" id="bookRead" value="read">
+                <div class="error"></div>
                 <button type="submit" id="submitBook">Submit</button>
 
             </form>

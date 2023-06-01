@@ -13,6 +13,16 @@ const readInput = document.querySelector('#bookRead')
 const submitBtn = document.querySelector('#submitBook')
 const errorMsg = document.querySelector('.error')
 
+class Book{
+    constructor(title,author,pages,read){
+    this.title=title
+    this.author=author
+    this.pages=pages
+    this.read=read
+    this.bookId=bookId
+    bookId++
+    }
+}
 
 let bookId = 1
 
@@ -21,14 +31,6 @@ let myLibrary = [
 ]
 console.log(myLibrary)
 
-function Book(title,author,pages,read){
-    this.title=title
-    this.author=author
-    this.pages=pages
-    this.read=read
-    this.bookId=bookId
-    bookId++
-}
 
 function addBookToLibrary(titleInput,authorInput,pagesInput,readInput){
     let userReadIt = true;

@@ -99,7 +99,6 @@ deleteBookListener();
 displayCards();
 
 
-
 function showFormForNewBook(){
 
     showButton.addEventListener('click', ()=>{
@@ -176,8 +175,107 @@ function deleteBook(id){
 }
 
 
+// --------------------- Sign In Form -----------------------------
+
+const signInButton = document.querySelector('.sign-in-btn')
+const signInForm = document.querySelector('.sign-in-form')
+const email = document.querySelector("#mail");
+const country = document.querySelector("#country");
+const zipcode = document.querySelector("#zipcode");
+const password = document.querySelector("#password");
+const confirmPassword = document.querySelector("#confirmPassword");
+
+const emailError = document.querySelector("#mail + span.error");
+const countryError = document.querySelector("#country + span.error");
+const zipcodeError = document.querySelector("#zipcode + span.error");
+const passwordError = document.querySelector("#password + span.error");
+const confirmPasswordError = document.querySelector("#confirmPassword + span.error");
+
+const overlay2 = document.querySelector('#overlay2')
 
 
+function showSignInForm(){
+    signInButton.addEventListener('click', ()=>{
+        signInForm.style.display = 'block';
+        overlay2.style.display = 'block';
+    })
+}
+showSignInForm();
+function hideSignInForm(){
+    document.addEventListener('click', (e)=>{
+        if(!signInForm.contains(e.target) && e.target !== signInButton){
+            signInForm.style.display = 'none';
+            overlay2.style.display = 'none';
 
+        }
+    })
+}
+hideSignInForm();
 
+email.addEventListener("input", (event) => {
+    if (email.validity.valid) {
+        emailError.textContent = "";
+        emailError.className = "error";
+    } else {
+        showError(email, emailError);
+    }
+});
+
+country.addEventListener("input", (event) => {
+    if (country.validity.valid) {
+        countryError.textContent = "";
+        countryError.className = "error";
+    } else {
+        showError(country, countryError);
+    }
+});
+
+zipcode.addEventListener("input", (event) => {
+    if (zipcode.validity.valid) {
+        zipcodeError.textContent = "";
+        zipcodeError.className = "error";
+    } else {
+        showError(zipcode, zipcodeError);
+    }
+});
+
+password.addEventListener("input", (event) => {
+    if (password.validity.valid) {
+        passwordError.textContent = "";
+        passwordError.className = "error";
+    } else {
+        showError(password, passwordError);
+    }
+});
+
+confirmPassword.addEventListener("input", (event) => {
+    if (confirmPassword.validity.valid) {
+        confirmPasswordError.textContent = "";
+        confirmPasswordError.className = "error";
+    } else {
+        showError(confirmPassword, confirmPasswordError);
+    }
+});
+
+signInForm.addEventListener("submit", (event) => {
+    if (!email.validity.valid || !country.validity.valid || !zipcode.validity.valid || !password.validity.valid || !confirmPassword.validity.valid) {
+        showError(email, emailError);
+        showError(country, countryError);
+        showError(zipcode, zipcodeError);
+        showError(password, passwordError);
+        showError(confirmPassword, confirmPasswordError);
+        event.preventDefault();
+    }
+});
+
+function showError(field, errorElement) {
+    if (field.validity.valueMissing) {
+        errorElement.textContent = "You need to enter a value.";
+    } else if (field.validity.typeMismatch) {
+        errorElement.textContent = "Entered value is invalid.";
+    } else if (field.validity.tooShort) {
+        errorElement.textContent = `Value should be at least ${field.minLength} characters; you entered ${field.value.length}.`;
+    }
+    errorElement.className = "error active";
+}
 });
